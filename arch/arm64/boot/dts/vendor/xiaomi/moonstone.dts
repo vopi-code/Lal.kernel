@@ -1,0 +1,121 @@
+#include "../qcom/blair-qrd-nopmi.dts"
+#include "moonstone-audio.dts"
+#include "moonstone-camera.dts"
+#include "moonstone-consumerir.dts"
+#include "moonstone-display.dts"
+#include "moonstone-fingerprint.dts"
+#include "moonstone-memory.dts"
+#include "moonstone-nfc.dts"
+#include "moonstone-pinctrl.dts"
+#include "moonstone-pmic.dts"
+#include "moonstone-regulator.dts"
+#include "moonstone-thermal.dts"
+#include "moonstone-touchscreen.dts"
+#include "moonstone-vibrator.dts"
+
+&qcom {
+	/delete-property/ mem-type;
+	/delete-property/ console-size;
+	record-size = <0x100000>;
+	pmsg-size = <0x100000>;
+	max-reason = <4>;
+};
+
+&ufshc_mem {
+	spm-level = <3>;
+};
+
+&sdhc_2 {
+	cd-gpios = <&tlmm 94 GPIO_ACTIVE_HIGH>;
+};
+
+&soc {
+	qcom,glink {
+		glink_adsp: adsp {
+				qcom,adsp_qrtr {
+						qcom,non-wake-svc = <0x190>;
+						};
+				};
+		};
+	jtag_mm0: jtagmm@9040000 {
+		status = "disabled";
+	};
+	jtag_mm1: jtagmm@9140000 {
+		status = "disabled";
+	};
+	jtag_mm2: jtagmm@9240000 {
+		status = "disabled";
+	};
+	jtag_mm3: jtagmm@9340000 {
+		status = "disabled";
+	};
+	jtag_mm4: jtagmm@9440000 {
+		status = "disabled";
+	};
+	jtag_mm5: jtagmm@9540000 {
+		status = "disabled";
+	};
+	jtag_mm6: jtagmm@9640000 {
+		status = "disabled";
+	};
+	jtag_mm7: jtagmm@9740000 {
+		status = "disabled";
+	};
+};
+
+&CPU0 {
+	capacity-dmips-mhz = <417>;
+	dynamic-power-coefficient = <262>;
+};
+&CPU1 {
+	capacity-dmips-mhz = <417>;
+	dynamic-power-coefficient = <262>;
+};
+&CPU2 {
+	capacity-dmips-mhz = <417>;
+	dynamic-power-coefficient = <262>;
+};
+&CPU3 {
+	capacity-dmips-mhz = <417>;
+	dynamic-power-coefficient = <262>;
+};
+&CPU4 {
+	capacity-dmips-mhz = <417>;
+	dynamic-power-coefficient = <262>;
+};
+&CPU5 {
+	capacity-dmips-mhz = <417>;
+	dynamic-power-coefficient = <262>;
+};
+&CPU6 {
+	capacity-dmips-mhz = <1024>;
+	dynamic-power-coefficient = <361>;
+};
+&CPU7 {
+	capacity-dmips-mhz = <1024>;
+	dynamic-power-coefficient = <361>;
+};
+
+&cpufreq_hw {
+		qcom,cpufreq-table-0 =
+			<576000>,
+			<691200>,
+			<940800>,
+			<1113600>,
+			<1324800>,
+			<1516800>,
+			<1651200>,
+			<1708800>,
+			<1804800>;
+
+		qcom,cpufreq-table-1 =
+			<691200>,
+			<940800>,
+			<1228800>,
+			<1401600>,
+			<1516800>,
+			<1651200>,
+			<1804800>,
+			<2054400>,
+			<2208000>;
+};
